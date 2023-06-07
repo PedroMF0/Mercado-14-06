@@ -16,6 +16,10 @@ public class DAOFactory {
         return produtoDAO;
     }
  
+    private static FuncionarioDAO funcionarioDAO = new FuncionarioDAO(); 
     
+     public static FuncionarioDAO getFuncionarioDAO(){
+        return funcionarioDAO;
+     }
     
 }

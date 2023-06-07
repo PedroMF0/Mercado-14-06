@@ -44,9 +44,12 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
         jtfNomePro = new javax.swing.JTextField();
         jtfQuantidade = new javax.swing.JTextField();
         jtfValorCusto = new javax.swing.JTextField();
-        jcbProdutoLimpeza = new javax.swing.JCheckBox();
-        jcbHigiene = new javax.swing.JCheckBox();
-        jcbAlimentos = new javax.swing.JCheckBox();
+        jLabel5 = new javax.swing.JLabel();
+        jtfDataValidade = new javax.swing.JTextField();
+        jcbAlimento = new javax.swing.JRadioButton();
+        jcbLimpeza = new javax.swing.JRadioButton();
+        jrbHigiene = new javax.swing.JRadioButton();
+        jrbEletrodomestico = new javax.swing.JRadioButton();
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jbtnCadastrar = new javax.swing.JButton();
         jbtnLimpar = new javax.swing.JButton();
@@ -65,19 +68,24 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Tipo Produto:");
 
-        tipos.add(jcbProdutoLimpeza);
-        jcbProdutoLimpeza.setText("Produto de Limpeza");
+        jLabel5.setText("Data Validade: ");
 
-        tipos.add(jcbHigiene);
-        jcbHigiene.setText("Higiene Pessoal");
-        jcbHigiene.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcbHigieneActionPerformed(evt);
-            }
-        });
+        tipos.add(jcbAlimento);
+        jcbAlimento.setSelected(true);
+        jcbAlimento.setText("Alimento");
+        jcbAlimento.setToolTipText("Alimento");
 
-        tipos.add(jcbAlimentos);
-        jcbAlimentos.setText("Alimentos");
+        tipos.add(jcbLimpeza);
+        jcbLimpeza.setText("Limpeza");
+        jcbLimpeza.setToolTipText("Limpeza");
+
+        tipos.add(jrbHigiene);
+        jrbHigiene.setText("Higiene Pessoal");
+        jrbHigiene.setToolTipText("Higiene");
+
+        tipos.add(jrbEletrodomestico);
+        jrbEletrodomestico.setText("Eletrodoméstico");
+        jrbEletrodomestico.setToolTipText("Eletrodoméstico");
 
         jLayeredPane1.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jLabel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -86,9 +94,12 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
         jLayeredPane1.setLayer(jtfNomePro, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfQuantidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jtfValorCusto, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jcbProdutoLimpeza, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jcbHigiene, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jcbAlimentos, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel5, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jtfDataValidade, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jcbAlimento, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jcbLimpeza, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jrbHigiene, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jrbEletrodomestico, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -97,28 +108,37 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfValorCusto))
-                        .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfQuantidade))
-                        .addGroup(jLayeredPane1Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jtfNomePro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfValorCusto))
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfQuantidade))
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtfNomePro, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtfDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jLayeredPane1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbProdutoLimpeza)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jcbHigiene)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcbAlimentos)))
-                .addContainerGap(196, Short.MAX_VALUE))
+                        .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jrbHigiene)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jrbEletrodomestico))
+                            .addGroup(jLayeredPane1Layout.createSequentialGroup()
+                                .addComponent(jcbAlimento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcbLimpeza)))))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +146,9 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
                 .addGap(25, 25, 25)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jtfNomePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNomePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtfDataValidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -136,13 +158,15 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
                     .addComponent(jtfValorCusto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcbProdutoLimpeza)
-                        .addComponent(jcbHigiene)
-                        .addComponent(jcbAlimentos))
-                    .addComponent(jLabel4))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jcbAlimento)
+                    .addComponent(jcbLimpeza))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbHigiene)
+                    .addComponent(jrbEletrodomestico))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jbtnCadastrar.setText("Cadastrar");
@@ -196,7 +220,7 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
                     .addComponent(jbtnCadastrar)
                     .addComponent(jbtnLimpar)
                     .addComponent(jbtnSair))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,30 +245,22 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
     private void cadastrar(){
          try{      
         ProdutoVO pVO = new ProdutoVO();
-        ArrayList tipoproduto = new ArrayList();
+        ArrayList tipo = new ArrayList();
         
         
         pVO.setNomepro(jtfNomePro.getText());
         pVO.setQuantidade(Integer.parseInt(jtfQuantidade.getText()));
         pVO.setValorcusto(Double.parseDouble(jtfValorCusto.getText()));
-        
-        
-        
-        if(jcbProdutoLimpeza.isSelected()){
-            tipoproduto.add(jcbProdutoLimpeza.getText());
+        pVO.setDatavalidade(jtfDataValidade.getText());
+        if(jcbAlimento.isSelected()){
+            pVO.setTipoproduto(jcbAlimento.getToolTipText());
+        }else if(jcbLimpeza.isSelected()){
+              pVO.setTipoproduto(jcbLimpeza.getToolTipText());
+        }else if(jrbHigiene.isSelected()){
+            pVO.setTipoproduto(jrbHigiene.getToolTipText());
+        }else{
+            pVO.setTipoproduto(jrbEletrodomestico.getToolTipText());
         }
-        if(jcbHigiene.isSelected()){
-            tipoproduto.add(jcbHigiene.getText());
-        }
-        if(jcbAlimentos.isSelected()){
-            tipoproduto.add(jcbAlimentos.getText());
-        }
-        
-        pVO.setTipoproduto(tipoproduto);
-        
-       
-        
-        
         
         ProdutoServicos ps = servicos.ServicosFactory.getProdutoServicos();
         
@@ -268,15 +284,11 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
         jtfNomePro.setText(null);
         jtfQuantidade.setText(null);
         jtfValorCusto.setText(null);
-        jcbProdutoLimpeza.setSelected(false);
-        jcbHigiene.setSelected(false);
-        jcbAlimentos.setSelected(false);
+        jtfDataValidade.setText(null);
+        
+        
     }
     
-    private void jcbHigieneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbHigieneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcbHigieneActionPerformed
-
     private void jbtnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCadastrarActionPerformed
         // TODO add your handling code here:
         cadastrar();
@@ -307,14 +319,17 @@ public class GUICadProduto extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLayeredPane jLayeredPane2;
     private javax.swing.JButton jbtnCadastrar;
     private javax.swing.JButton jbtnLimpar;
     private javax.swing.JButton jbtnSair;
-    private javax.swing.JCheckBox jcbAlimentos;
-    private javax.swing.JCheckBox jcbHigiene;
-    private javax.swing.JCheckBox jcbProdutoLimpeza;
+    private javax.swing.JRadioButton jcbAlimento;
+    private javax.swing.JRadioButton jcbLimpeza;
+    private javax.swing.JRadioButton jrbEletrodomestico;
+    private javax.swing.JRadioButton jrbHigiene;
+    private javax.swing.JTextField jtfDataValidade;
     private javax.swing.JTextField jtfNomePro;
     private javax.swing.JTextField jtfQuantidade;
     private javax.swing.JTextField jtfValorCusto;

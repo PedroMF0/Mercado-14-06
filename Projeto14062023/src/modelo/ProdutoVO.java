@@ -17,7 +17,27 @@ public class ProdutoVO {
    private String nomepro;
    private int quantidade;
    private double valorcusto;
-   private ArrayList tipoproduto;
+   private String tipoproduto;
+
+    public String getTipoproduto() {
+        return tipoproduto;
+    }
+
+    public void setTipoproduto(String tipoproduto) {
+        this.tipoproduto = tipoproduto;
+    }
+
+   
+   
+
+    public String getDatavalidade() {
+        return datavalidade;
+    }
+
+    public void setDatavalidade(String datavalidade) {
+        this.datavalidade = datavalidade;
+    }
+   private String datavalidade;
 
     public long getIdproduto() {
         return idproduto;
@@ -51,13 +71,9 @@ public class ProdutoVO {
         this.valorcusto = valorcusto;
     }
 
-    public ArrayList getTipoproduto() {
-        return tipoproduto;
-    }
 
-    public void setTipoproduto(ArrayList tipoproduto) {
-        this.tipoproduto = tipoproduto;
-    }
+    
+    
    
    
     

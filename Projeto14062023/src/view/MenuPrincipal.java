@@ -21,9 +21,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
     
     private boolean flagGuiCadProduto = false;
     private boolean flagGuiCadFuncionario = false;
+    private boolean flagGuiManuProduto = false;
+    private boolean flagGuiManuFuncionario = false;
     
     public MenuPrincipal() {
         initComponents();
+        
     }
 
     /**
@@ -41,8 +44,8 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
         jmiCadFuncionario = new javax.swing.JMenuItem();
         jmiCadProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        jmiManuProduto = new javax.swing.JMenuItem();
+        jmiManuFuncionario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,11 +92,31 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
 
         jMenu2.setText("Manutenção");
 
-        jMenuItem3.setText("ManuProduto");
-        jMenu2.add(jMenuItem3);
+        jmiManuProduto.setText("ManuProduto");
+        jmiManuProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiManuProdutoActionPerformed(evt);
+            }
+        });
+        jmiManuProduto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jmiManuProdutoKeyPressed(evt);
+            }
+        });
+        jMenu2.add(jmiManuProduto);
 
-        jMenuItem4.setText("ManuFuncionário");
-        jMenu2.add(jMenuItem4);
+        jmiManuFuncionario.setText("ManuFuncionário");
+        jmiManuFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiManuFuncionarioActionPerformed(evt);
+            }
+        });
+        jmiManuFuncionario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jmiManuFuncionarioKeyPressed(evt);
+            }
+        });
+        jMenu2.add(jmiManuFuncionario);
 
         jMenuBar1.add(jMenu2);
 
@@ -111,6 +134,7 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void abrirCadProduto(){
@@ -125,9 +149,41 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
         }//fim do if
     }//fim do método abrirCadProduto 
     
+   private void abrirManuProduto(){
+        if(!flagGuiManuProduto){
+            GUIManuProduto gmp = new GUIManuProduto();
+            jdpAreaDeTrabalho.add(gmp);
+            gmp.setVisible(true);
+            
+            flagGuiManuProduto = true;
+            gmp.addInternalFrameListener(this);
+        }//fim do if
+    }//fim do método abrirManuProduto 
    
    
+   private void abrirCadFuncionario(){
+        
+        if (!flagGuiCadFuncionario){
+            GUICadFuncionario gcf = new GUICadFuncionario();
+            jdpAreaDeTrabalho.add(gcf);
+            gcf.setVisible(true);
+            
+            flagGuiCadFuncionario = true;
+            gcf.addInternalFrameListener(this);
+        }
+    }
     
+    private void abrirManuFuncionario(){
+        if(!flagGuiManuFuncionario){
+            GUIManuFuncionario gmf = new GUIManuFuncionario();
+            jdpAreaDeTrabalho.add(gmf);
+            gmf.setVisible(true);
+            
+            flagGuiManuFuncionario = true;
+            gmf.addInternalFrameListener(this);
+        }//fim do if
+    }//fim do método abrirManuProduto 
+   
     private void jmiCadProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadProdutoActionPerformed
         // TODO add your handling code here:
         abrirCadProduto();
@@ -142,13 +198,40 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
 
     private void jmiCadFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiCadFuncionarioActionPerformed
       
+        abrirCadFuncionario();
     }//GEN-LAST:event_jmiCadFuncionarioActionPerformed
 
     private void jmiCadFuncionarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jmiCadFuncionarioKeyPressed
         // TODO add your handling code here:
-       
+       if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            abrirCadFuncionario();
+       }
         
     }//GEN-LAST:event_jmiCadFuncionarioKeyPressed
+
+    private void jmiManuProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManuProdutoActionPerformed
+        // TODO add your handling code here:
+           abrirManuProduto();
+    }//GEN-LAST:event_jmiManuProdutoActionPerformed
+
+    private void jmiManuProdutoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jmiManuProdutoKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            abrirManuProduto();
+        }
+    }//GEN-LAST:event_jmiManuProdutoKeyPressed
+
+    private void jmiManuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManuFuncionarioActionPerformed
+        // TODO add your handling code here:
+          abrirManuFuncionario();
+    }//GEN-LAST:event_jmiManuFuncionarioActionPerformed
+
+    private void jmiManuFuncionarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jmiManuFuncionarioKeyPressed
+        // TODO add your handling code here:
+         if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            abrirManuFuncionario();
+        }
+    }//GEN-LAST:event_jmiManuFuncionarioKeyPressed
 
     /**
      * @param args the command line arguments
@@ -191,11 +274,11 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JDesktopPane jdpAreaDeTrabalho;
     private javax.swing.JMenuItem jmiCadFuncionario;
     private javax.swing.JMenuItem jmiCadProduto;
+    private javax.swing.JMenuItem jmiManuFuncionario;
+    private javax.swing.JMenuItem jmiManuProduto;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -212,6 +295,12 @@ public class MenuPrincipal extends javax.swing.JFrame implements InternalFrameLi
     public void internalFrameClosed(InternalFrameEvent ife) {
          if(ife.getInternalFrame() instanceof GUICadProduto){
             flagGuiCadProduto = false;
+         }else if (ife.getInternalFrame() instanceof GUIManuProduto){
+            flagGuiManuProduto = false;
+         }else if(ife.getInternalFrame() instanceof GUICadFuncionario){
+            flagGuiCadFuncionario = false;
+         }else if(ife.getInternalFrame() instanceof GUIManuFuncionario){
+             flagGuiManuFuncionario = false;
          }
     }
 

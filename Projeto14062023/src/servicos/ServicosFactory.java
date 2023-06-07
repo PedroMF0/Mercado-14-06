@@ -16,4 +16,9 @@ public class ServicosFactory {
         return produtoServicos;
     }
     
+    private static FuncionarioServicos funcionarioServicos = new FuncionarioServicos();
+    
+     public static FuncionarioServicos getFuncionarioServicos(){
+          return funcionarioServicos;
+      }
 }
